@@ -1,0 +1,30 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+    {# Plantilla común: fuentes, CSS y metadatos compartidos por todas las páginas. #}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Bitácora{% endblock %} · Blog personal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/site.css' %}">
+</head>
+<body>
+    {# Encabezado y navegación principal del blog. #}
+    <header class="site-header">
+        <a class="brand" href="{% url 'post_list' %}"><span class="brand-mark">B</span> bitácora<span class="brand-dot">.</span></a>
+        <nav class="site-nav" aria-label="Navegación principal">
+            <a href="{% url 'post_list' %}">Archivo</a>
+            <a href="/admin/">Admin</a>
+        </nav>
+    </header>
+    {# Cada página hija inserta aquí su contenido específico. #}
+    <main>{% block content %}{% endblock %}</main>
+    <footer class="site-footer">
+        <span>Notas desde el borde de la pantalla.</span>
+        <span>© {% now "Y" %} · Blog personal</span>
+    </footer>
+</body>
+</html>

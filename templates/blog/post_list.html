@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+{# Portada: presentación general y entrada más reciente. #}
+<section class="intro wrap">
+    <p class="eyebrow">Cuaderno abierto / 2026</p>
+    <h1>Ideas que merecen<br><em>un poco de tiempo.</em></h1>
+    <p class="intro-copy">Un espacio para escribir sobre tecnología, cultura digital y las cosas que voy aprendiendo mientras las hago.</p>
+</section>
+
+{% if featured %}
+<section class="featured wrap">
+    <div class="featured-image {% if not featured.cover %}image-placeholder{% endif %}">
+        {% if featured.cover %}<img src="{{ featured.cover.url }}" alt="{{ featured.title }}">{% else %}<span>01<br>ensayo visual</span>{% endif %}
+    </div>
+    <div class="featured-copy">
+        <p class="eyebrow">Entrada destacada · {{ featured.category }}</p>
+        <h2><a href="{{ featured.get_absolute_url }}">{{ featured.title }}</a></h2>
+        <p>{{ featured.excerpt }}</p>
+        <a class="text-link" href="{{ featured.get_absolute_url }}">Leer entrada <span>↗</span></a>
+    </div>
+</section>
+{% else %}
+<section class="empty-state wrap"><p class="eyebrow">El archivo está por comenzar</p><h2>Creá la primera entrada desde el panel de administración.</h2></section>
+{% endif %}
+
+<section class="archive wrap">
+    {# Recorre todas las entradas y crea una tarjeta por cada una. #}
+    <div class="section-heading"><p class="eyebrow">Todas las notas</p><span>{{ posts|length }} entradas</span></div>
+    <div class="post-grid">
+        {% for post in posts %}
+        <article class="post-card">
+            <div class="card-image {% if not post.cover %}image-placeholder{% endif %}">
+                {% if post.cover %}<img src="{{ post.cover.url }}" alt="{{ post.title }}">{% else %}<span>{{ forloop.counter|stringformat:"02d" }}</span>{% endif %}
+            </div>
+            <p class="eyebrow">{{ post.category }} · {{ post.published_at|date:"d.m.Y" }}</p>
+            <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+            <p>{{ post.excerpt }}</p>
+            <a class="text-link" href="{{ post.get_absolute_url }}">Abrir nota <span>↗</span></a>
+        </article>
+        {% empty %}
+        <p>Todavía no hay entradas publicadas.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
