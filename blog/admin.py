@@ -3,7 +3,7 @@ from django.contrib import admin
 from .models import Comment, Post
 
 
-# Configuración del panel para crear y editar entradas.
+# Configuración del panel para crear y editar entradas.67
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ("title", "category", "published_at")
