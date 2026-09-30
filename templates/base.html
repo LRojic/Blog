@@ -30,8 +30,17 @@
     {# Cada página hija inserta aquí su contenido específico. #}
     <main>{% block content %}{% endblock %}</main>
     <footer class="site-footer">
-        <span>Notas desde el borde de la pantalla.</span>
-        <span>© {% now "Y" %} · Blog personal</span>
+        <div class="footer-about">
+            <a class="footer-brand" href="{% url 'post_list' %}">Rojic's Blog<span>.</span></a>
+            <p>Publicación independiente sobre tecnología, cultura digital y proyectos en desarrollo.</p>
+        </div>
+        <div class="footer-details">
+            <nav class="footer-social" aria-label="Redes sociales">
+                <a href="https://www.instagram.com/lorenzo_rojic/" target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">↗</span></a>
+                <a href="https://github.com/LRojic" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+            </nav>
+            <p class="copyright">© {% now "Y" %} Lorenzo Rojic. Todos los derechos sixseven.</p>
+        </div>
     </footer>
     <script>
         const toggleBtn = document.getElementById('modo-toggle');
