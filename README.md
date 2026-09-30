@@ -19,4 +19,4 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-Luego abrí `http://127.0.0.1:8000/` para ver el blog y `http://127.0.0.1:8000/admin/` para administrar el contenido.
+Luego abrí `http://127.0.0.1:8000/` para ver el portafolio. Desde allí podés entrar al blog con el enlace **Blog** o visitando `http://127.0.0.1:8000/blog/`. El panel de administración está en `http://127.0.0.1:8000/admin/`.

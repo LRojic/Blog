@@ -2,11 +2,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
+from django.views.generic import TemplateView
 
-# El panel admin usa /admin/ y el resto de las rutas pertenece a la app blog.
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("blog.urls")),
+    path("blog/", include("blog.urls")),
+    path("", TemplateView.as_view(template_name="index.html"), name="portfolio"),
 ]
 
 if settings.DEBUG:
