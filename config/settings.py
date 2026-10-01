@@ -34,7 +34,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-            "DIRS": [BASE_DIR / "templates", BASE_DIR / "LRojic.github.io"],
+            "DIRS": [BASE_DIR / "templates", BASE_DIR / "portafolio"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -64,7 +64,7 @@ USE_TZ = True
 
 # Archivos CSS/JS y archivos multimedia subidos desde el panel admin.
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [BASE_DIR / "static", BASE_DIR / "LRojic.github.io"]
+STATICFILES_DIRS = [BASE_DIR / "static", BASE_DIR / "portafolio"]
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

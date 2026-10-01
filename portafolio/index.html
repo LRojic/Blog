@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rojic.dev</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+  <link rel="icon" type="image/png" href="{% static 'assets/cobra-kai-logo.png' %}">
+</head>
+<body>
+
+  <header id="navbar">
+    <nav>
+      <span class="logo">Rojic.dev</span>
+      <ul class="nav-links">
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="btn-blog" href="{% url 'post_list' %}">
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> Ir al blog
+        </a>
+        <button id="modo-toggle" aria-label="Cambiar modo claro/oscuro">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="sobre-mi">
+      <div class="sobre-mi-contenido">
+        <img src="{% static 'assets/chabon.jfif' %}" alt="Foto de Lorenzo Rojic" class="foto-perfil">
+        <div class="sobre-mi-texto">
+          <h1>Hola, soy Lorenzo Rojic</h1>
+          <p>Estudiante de computación, aprendiendo desarrollo web, bases de datos y programación con Python.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyectos">
+      <h2>Proyectos</h2>
+      <div class="proyectos-lista">
+        <article class="proyecto-card">
+          <img src="{% static 'assets/prueba1.jfif' %}" alt="Dungeon Escape">
+          <div class="proyecto-info">
+            <h3>Dungeon Escape</h3>
+            <p>Un juego pixel art clásico.</p>
+            <a href="https://github.com/edu00198/Juego-escape" target="_blank">Ver más</a>
+          </div>
+        </article>
+        <article class="proyecto-card">
+          <img src="{% static 'assets/prueba2.jfif' %}" alt="Reproductor de música">
+          <div class="proyecto-info">
+            <h3>Reproductor de música</h3>
+            <p>Un reproductor de música que descarga canciones para escucharlas en local.</p>
+            <a href="https://github.com/LRojic/TP-N-1-Spotify-Laboratorio-de-Algoritmos" target="_blank">Ver más</a>
+          </div>
+        </article>
+        <article class="proyecto-card">
+          <img src="{% static 'assets/prueba3.jpg' %}" alt="Pokedex">
+          <div class="proyecto-info">
+            <h3>Pokedex</h3>
+            <p>Un juego basado en Pokémon.</p>
+            <a href="https://github.com/LRojic/programacion_orientada_a_objetos/tree/main/Trabajo%20pr%C3%A1ctico%20N%C2%B02" target="_blank">Ver más</a>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section id="habilidades">
+      <div class="habilidades-contenido">
+        <div class="habilidades-texto">
+          <h2>Habilidades técnicas</h2>
+          <ul class="skills-list">
+            <li><i class="fa-brands fa-html5"></i> HTML</li>
+            <li><i class="fa-brands fa-css3-alt"></i> CSS</li>
+            <li><i class="fa-brands fa-python"></i> Python</li>
+            <li><i class="fa-solid fa-database"></i> MySQL</li>
+            <li><img src="{% static 'assets/logo-scratch.png' %}" alt="Scratch" class="skill-icon"> Scratch</li>
+            <li><img src="{% static 'assets/logo-ps.png' %}" alt="Photoshop" class="skill-icon"> Photoshop</li>
+          </ul>
+          <a href="{% static 'assets/curriculum.pdf' %}" target="_blank" class="btn-cv">Ver CV</a>
+        </div>
+
+        <div class="habilidades-img-wrapper">
+          <img src="{% static 'assets/COBRA.jpg' %}" alt="Logo Cobra Kai" class="habilidades-img">
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+
+      <div class="contacto-botones">
+
+        <a href="https://github.com/LRojic" target="_blank" class="btn-contacto btn-github">
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+
+        <a href="https://www.instagram.com/lorenzo_rojic/" target="_blank" class="btn-contacto btn-instagram">
+          <i class="fa-brands fa-instagram"></i> Instagram
+        </a>
+
+        <a href="#" target="_blank" class="btn-contacto btn-youtube">
+          <i class="fa-brands fa-youtube"></i> YouTube
+        </a>
+
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lrojic@alumno.huergo.edu.ar"
+          target="_blank"
+          class="btn-contacto btn-email">
+          <i class="fa-solid fa-envelope"></i> lrojic@alumno.huergo.edu.ar
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Rojic. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('modo-toggle');
+    const icon = toggleBtn.querySelector('i');
+
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const esOscuro = document.body.classList.contains('dark-mode');
+      icon.className = esOscuro ? 'fa-regular fa-sun' : 'fa-solid fa-moon';
+    });
+  </script>
+
+</body>
+</html>
