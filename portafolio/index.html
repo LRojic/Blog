@@ -134,11 +134,23 @@
   <script>
     const toggleBtn = document.getElementById('modo-toggle');
     const icon = toggleBtn.querySelector('i');
+    const modoGuardado = localStorage.getItem('blog-theme');
 
+    if (modoGuardado === 'dark') document.body.classList.add('dark-mode');
+
+    function actualizarControlTema() {
+      const esOscuro = document.body.classList.contains('dark-mode');
+      icon.className = esOscuro ? 'fa-regular fa-sun' : 'fa-solid fa-moon';
+      toggleBtn.setAttribute('aria-pressed', esOscuro);
+      toggleBtn.setAttribute('aria-label', esOscuro ? 'Activar modo claro' : 'Activar modo oscuro');
+    }
+
+    actualizarControlTema();
     toggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
       const esOscuro = document.body.classList.contains('dark-mode');
-      icon.className = esOscuro ? 'fa-regular fa-sun' : 'fa-solid fa-moon';
+      localStorage.setItem('blog-theme', esOscuro ? 'dark' : 'light');
+      actualizarControlTema();
     });
   </script>
 
