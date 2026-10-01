@@ -28,13 +28,13 @@ body.dark-mode {
 body { margin: 0; color: var(--blanco); background: var(--fondo); font-family: var(--body); transition: background .3s, color .3s; }
 a { color: inherit; text-decoration: none; }
 .site-header { position: sticky; top: 0; z-index: 100; color: white; background: var(--rojo-electrico); }
-.site-navbar { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 16px 32px; }
-.logo { flex: 0 0 auto; font: 700 19px "Poppins", sans-serif; }
-.nav-links { display: flex; align-items: center; gap: 24px; margin: 0; padding: 0; list-style: none; font: 400 14px "Poppins", sans-serif; }
+.site-navbar { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 20px; padding: 8px 32px; }
+.logo { grid-column: 2; grid-row: 1; justify-self: center; white-space: nowrap; font: 700 19px "Poppins", sans-serif; }
+.nav-links { display: flex; grid-column: 1; grid-row: 1; align-items: center; gap: 18px; margin: 0; padding: 0; list-style: none; white-space: nowrap; font: 400 14px "Poppins", sans-serif; }
 .nav-links a { color: white; transition: opacity .2s; }
 .nav-links a:hover { opacity: .75; }
 .nav-links .btn-blog { display: inline-block; padding: 8px 14px; border-radius: 6px; color: var(--rojo-electrico); background: white; font-weight: 600; }
-.mode-toggle { flex: 0 0 auto; margin: 0; padding: 4px; border: 0; color: white; background: transparent; cursor: pointer; font-size: 19px; }
+.mode-toggle { grid-column: 3; grid-row: 1; justify-self: end; margin: 0; padding: 4px; border: 0; color: white; background: transparent; cursor: pointer; font-size: 19px; }
 .mode-toggle:hover { transform: rotate(20deg); }
 .text-link:hover, .back-link:hover { color: var(--rojo-electrico); }
 .wrap { width: min(1120px, 90vw); margin-inline: auto; }
@@ -111,9 +111,11 @@ button span { margin-left: 12px; color: var(--rojo-electrico); font-size: 1rem; 
 .footer-social span { margin-left: 5px; color: var(--rojo-electrico); }
 .copyright { margin: 0; color: var(--gris); font: .62rem var(--mono); }
 @media (max-width: 700px) {
-    .site-navbar { flex-wrap: wrap; padding: 16px 5vw; }
-    .nav-links { order: 3; flex: 1 0 100%; justify-content: space-between; gap: 10px; font-size: .7rem; }
-    .mode-toggle { margin-left: auto; }
+    .site-navbar { grid-template-columns: 1fr auto; gap: 8px 12px; padding: 7px 5vw; }
+    .logo { grid-column: 1; grid-row: 1; justify-self: start; }
+    .nav-links { grid-column: 1 / -1; grid-row: 2; justify-content: space-between; gap: 8px; font-size: .7rem; }
+    .nav-links .btn-blog { padding: 5px 8px; }
+    .mode-toggle { grid-column: 2; grid-row: 1; }
     .intro { min-height: 500px; padding: 64px 5vw; }
     .intro h1 { font-size: 3.7rem; }
     .intro-copy { margin: 36px 0 0; }

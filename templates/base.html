@@ -16,12 +16,12 @@
 <body>
     <header id="navbar" class="site-header">
         <nav class="site-navbar" aria-label="Navegación principal">
-            <a class="logo" href="{% url 'portfolio' %}">Rojic.dev</a>
             <ul class="nav-links">
-                <li><a href="{% url 'post_list' %}">Archivo</a></li>
-                <li><a href="/admin/">Admin</a></li>
                 <li><a class="btn-blog" href="{% url 'portfolio' %}">Volver al portafolio</a></li>
+                <li><a href="/admin/">Admin</a></li>
+                <li><a href="{% url 'post_list' %}">Sobre nosotros</a></li>
             </ul>
+            <a class="logo" href="{% url 'post_list' %}">Rojic's Blog</a>
             <button id="modo-toggle" class="mode-toggle" type="button" aria-label="Activar modo oscuro" aria-pressed="false">
                 <i class="fa-solid fa-moon" aria-hidden="true"></i>
             </button>
