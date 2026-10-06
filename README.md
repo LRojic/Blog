@@ -10,7 +10,7 @@ Blog personal desarrollado con Django para el trabajo práctico de Laboratorio d
 - Panel `/admin/` para que el administrador cree entradas y elimine comentarios.
 - Diseño responsive y consistente para escritorio y móvil.
 
-## Cómo ejecutar
+## Cómo ejecutar por primera vez
 
 ```bash
 python -m pip install -r requirements.txt
