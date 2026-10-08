@@ -31,4 +31,4 @@ git commit -m "Actualizar datos del blog"
 git push
 ```
 
-Usá un repositorio privado: la base contiene cuentas de administración (incluidos hashes de contraseñas), correos y comentarios. Git conserva los datos solo después de hacer commit y push; no los sincroniza automáticamente.
+La base contiene cuentas de administración (incluidos hashes de contraseñas), correos y comentarios. Git conserva los datos solo después de hacer commit y push; no los sincroniza automáticamente.

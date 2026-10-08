@@ -9,24 +9,57 @@
         <h1>{{ post.title }}</h1>
         <p class="detail-excerpt">{{ post.excerpt }}</p>
     </header>
-    {% if post.cover %}<img class="detail-cover" src="{{ post.cover.url }}" alt="{{ post.title }}">{% endif %}
+    {% if post.cover %}
+        <img class="detail-cover" src="{{ post.cover.url }}" alt="{{ post.title }}">
+    {% endif %}
     <div class="detail-layout">
         <div class="post-content">{{ post.content|linebreaks }}</div>
-        <aside class="post-meta"><span>Publicado</span><strong>{{ post.published_at|date:"d \d\e F, Y" }}</strong><span>Conversación</span><strong>{{ comments|length }} comentario{{ comments|length|pluralize:"s" }}</strong></aside>
+        <aside class="post-meta">
+            <span>Publicado</span>
+            <strong>{{ post.published_at|date:"d \d\e F, Y" }}</strong>
+            <span>Conversación</span>
+            <strong>{{ comments|length }} comentario{{ comments|length|pluralize:"s" }}</strong>
+        </aside>
     </div>
 </article>
 
 <section class="conversation wrap">
     {# Lista de comentarios y formulario para publicar uno nuevo. #}
-    <div class="section-heading"><p class="eyebrow">La conversación</p><span>{{ comments|length }} comentario{{ comments|length|pluralize:"s" }}</span></div>
-    {% for message in messages %}<div class="notice">{{ message }}</div>{% endfor %}
+    <div class="section-heading">
+        <p class="eyebrow">La conversación</p>
+        <span>{{ comments|length }} comentario{{ comments|length|pluralize:"s" }}</span>
+    </div>
+    {% for message in messages %}
+        <div class="notice">{{ message }}</div>
+    {% endfor %}
     <div class="comments-list">
-        {% for comment in comments %}<div class="comment"><div class="comment-avatar">{{ comment.name|first|upper }}</div><div><strong>{{ comment.name }}</strong><time>{{ comment.created_at|date:"d.m.Y" }}</time><p>{{ comment.body|linebreaksbr }}</p></div></div>{% empty %}<p class="muted">Sé la primera persona en dejar una idea sobre esta entrada.</p>{% endfor %}
+        {% for comment in comments %}
+            <div class="comment">
+                <div class="comment-avatar">{{ comment.name|first|upper }}</div>
+                <div>
+                    <strong>{{ comment.name }}</strong>
+                    <time>{{ comment.created_at|date:"d.m.Y" }}</time>
+                    <p>{{ comment.body|linebreaksbr }}</p>
+                </div>
+            </div>
+        {% empty %}
+            <p class="muted">Sé la primera persona en dejar una idea sobre esta entrada.</p>
+        {% endfor %}
     </div>
     <form class="comment-form" method="post">
         {% csrf_token %}
         <p class="eyebrow">Sumate a la conversación</p>
-        <div class="form-row">{% for field in form %}<label>{{ field.label }}{{ field }}{% for error in field.errors %}<small>{{ error }}</small>{% endfor %}</label>{% endfor %}</div>
+        <div class="form-row">
+            {% for field in form %}
+                <label>
+                    {{ field.label }}
+                    {{ field }}
+                    {% for error in field.errors %}
+                        <small>{{ error }}</small>
+                    {% endfor %}
+                </label>
+            {% endfor %}
+        </div>
         <button type="submit">Publicar comentario <span>↗</span></button>
     </form>
 </section>

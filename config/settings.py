@@ -1,5 +1,5 @@
-from pathlib import Path
 import os
+from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -35,7 +35,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-            "DIRS": [BASE_DIR / "templates", BASE_DIR / "portafolio"],
+        "DIRS": [BASE_DIR / "templates", BASE_DIR / "portafolio"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -66,6 +66,6 @@ USE_TZ = True
 # Archivos CSS/JS y archivos multimedia subidos desde el panel admin.
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static", BASE_DIR / "portafolio"]
-MEDIA_URL = "media/"
+MEDIA_URL = "/media/"
 MEDIA_ROOT = Path(os.environ.get("DJANGO_MEDIA_ROOT", str(BASE_DIR / "media")))
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

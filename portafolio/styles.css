@@ -30,6 +30,7 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
+/* Navegación y controles del sitio. */
 header {
   position: sticky;
   top: 0;
@@ -91,7 +92,7 @@ nav {
   background: #f2f2f2;
 }
 
-#modo-toggle {
+#theme-toggle {
   background: none;
   border: none;
   font-size: 19px;
@@ -100,10 +101,11 @@ nav {
   transition: transform 0.2s;
 }
 
-#modo-toggle:hover {
+#theme-toggle:hover {
   transform: rotate(20deg);
 }
 
+/* Secciones principales del portafolio. */
 section {
   padding: 64px 32px;
   max-width: 1000px;
@@ -144,6 +146,7 @@ h2 {
   min-width: 250px;
 }
 
+/* Tarjetas de proyectos. */
 .proyectos-lista {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -194,6 +197,7 @@ h2 {
   color: var(--color-principal-oscuro);
 }
 
+/* Habilidades, CV y contacto. */
 .habilidades-contenido {
   display: flex;
   align-items: center;
@@ -301,6 +305,7 @@ h2 {
   color: var(--color-texto);
 }
 
+/* Pie de página y ajustes para pantallas pequeñas. */
 footer {
   text-align: center;
   padding: 24px;

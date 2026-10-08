@@ -23,7 +23,7 @@
                 <li><a href="{% url 'post_list' %}">Sobre nosotros</a></li>
             </ul>
             <a class="logo" href="{% url 'post_list' %}">Rojic's Blog</a>
-            <button id="modo-toggle" class="mode-toggle" type="button" aria-label="Activar modo oscuro" aria-pressed="false">
+            <button id="theme-toggle" class="mode-toggle" type="button" aria-label="Activar modo oscuro" aria-pressed="false">
                 <i class="fa-solid fa-moon" aria-hidden="true"></i>
             </button>
         </nav>
@@ -37,32 +37,16 @@
         </div>
         <div class="footer-details">
             <nav class="footer-social" aria-label="Redes sociales">
-                <a href="https://www.instagram.com/lorenzo_rojic/" target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">↗</span></a>
-                <a href="https://github.com/LRojic" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+                <a href="https://www.instagram.com/lorenzo_rojic/" target="_blank" rel="noopener noreferrer">
+                    Instagram <span aria-hidden="true">↗</span>
+                </a>
+                <a href="https://github.com/LRojic" target="_blank" rel="noopener noreferrer">
+                    GitHub <span aria-hidden="true">↗</span>
+                </a>
             </nav>
             <p class="copyright">© {% now "Y" %} Lorenzo Rojic. Todos los derechos sixseven.</p>
         </div>
     </footer>
-    <script>
-        const toggleBtn = document.getElementById('modo-toggle');
-        const icon = toggleBtn.querySelector('i');
-        const modoGuardado = localStorage.getItem('blog-theme');
-
-        if (modoGuardado === 'dark') document.body.classList.add('dark-mode');
-
-        function actualizarControlTema() {
-            const esOscuro = document.body.classList.contains('dark-mode');
-            icon.className = esOscuro ? 'fa-regular fa-sun' : 'fa-solid fa-moon';
-            toggleBtn.setAttribute('aria-pressed', esOscuro);
-            toggleBtn.setAttribute('aria-label', esOscuro ? 'Activar modo claro' : 'Activar modo oscuro');
-        }
-
-        actualizarControlTema();
-        toggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            localStorage.setItem('blog-theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-            actualizarControlTema();
-        });
-    </script>
+    <script src="{% static 'js/theme-toggle.js' %}"></script>
 </body>
 </html>

@@ -30,8 +30,8 @@
         <a class="btn-blog" href="{% url 'post_list' %}">
           <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> Ir al blog
         </a>
-        <button id="modo-toggle" aria-label="Cambiar modo claro/oscuro">
-          <i class="fa-solid fa-moon"></i>
+        <button id="theme-toggle" aria-label="Activar modo oscuro" aria-pressed="false" type="button">
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
         </button>
       </div>
     </nav>
@@ -57,7 +57,7 @@
           <div class="proyecto-info">
             <h3>Dungeon Escape</h3>
             <p>Un juego pixel art clásico.</p>
-            <a href="https://github.com/edu00198/Juego-escape" target="_blank">Ver más</a>
+            <a href="https://github.com/edu00198/Juego-escape" target="_blank" rel="noopener noreferrer">Ver más</a>
           </div>
         </article>
         <article class="proyecto-card">
@@ -65,7 +65,7 @@
           <div class="proyecto-info">
             <h3>Reproductor de música</h3>
             <p>Un reproductor de música que descarga canciones para escucharlas en local.</p>
-            <a href="https://github.com/LRojic/TP-N-1-Spotify-Laboratorio-de-Algoritmos" target="_blank">Ver más</a>
+            <a href="https://github.com/LRojic/TP-N-1-Spotify-Laboratorio-de-Algoritmos" target="_blank" rel="noopener noreferrer">Ver más</a>
           </div>
         </article>
         <article class="proyecto-card">
@@ -73,7 +73,7 @@
           <div class="proyecto-info">
             <h3>Pokedex</h3>
             <p>Un juego basado en Pokémon.</p>
-            <a href="https://github.com/LRojic/programacion_orientada_a_objetos/tree/main/Trabajo%20pr%C3%A1ctico%20N%C2%B02" target="_blank">Ver más</a>
+            <a href="https://github.com/LRojic/programacion_orientada_a_objetos/tree/main/Trabajo%20pr%C3%A1ctico%20N%C2%B02" target="_blank" rel="noopener noreferrer">Ver más</a>
           </div>
         </article>
       </div>
@@ -90,7 +90,7 @@
             <li><img src="{% static 'assets/logo-scratch.png' %}" alt="Scratch" class="skill-icon"> Scratch</li>
             <li><img src="{% static 'assets/logo-ps.png' %}" alt="Photoshop" class="skill-icon"> Photoshop</li>
           </ul>
-          <a href="{% static 'assets/curriculum.pdf' %}" target="_blank" class="btn-cv">Ver CV</a>
+          <a href="{% static 'assets/curriculum.pdf' %}" target="_blank" rel="noopener noreferrer" class="btn-cv">Ver CV</a>
         </div>
 
         <div class="habilidades-img-wrapper">
@@ -104,20 +104,21 @@
 
       <div class="contacto-botones">
 
-        <a href="https://github.com/LRojic" target="_blank" class="btn-contacto btn-github">
+        <a href="https://github.com/LRojic" target="_blank" rel="noopener noreferrer" class="btn-contacto btn-github">
           <i class="fa-brands fa-github"></i> GitHub
         </a>
 
-        <a href="https://www.instagram.com/lorenzo_rojic/" target="_blank" class="btn-contacto btn-instagram">
+        <a href="https://www.instagram.com/lorenzo_rojic/" target="_blank" rel="noopener noreferrer" class="btn-contacto btn-instagram">
           <i class="fa-brands fa-instagram"></i> Instagram
         </a>
 
-        <a href="#" target="_blank" class="btn-contacto btn-youtube">
+        <a href="#" target="_blank" rel="noopener noreferrer" class="btn-contacto btn-youtube">
           <i class="fa-brands fa-youtube"></i> YouTube
         </a>
 
         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lrojic@alumno.huergo.edu.ar"
           target="_blank"
+          rel="noopener noreferrer"
           class="btn-contacto btn-email">
           <i class="fa-solid fa-envelope"></i> lrojic@alumno.huergo.edu.ar
         </a>
@@ -131,28 +132,7 @@
     <p>&copy; 2026 Rojic. Todos los derechos reservados.</p>
   </footer>
 
-  <script>
-    const toggleBtn = document.getElementById('modo-toggle');
-    const icon = toggleBtn.querySelector('i');
-    const modoGuardado = localStorage.getItem('blog-theme');
-
-    if (modoGuardado === 'dark') document.body.classList.add('dark-mode');
-
-    function actualizarControlTema() {
-      const esOscuro = document.body.classList.contains('dark-mode');
-      icon.className = esOscuro ? 'fa-regular fa-sun' : 'fa-solid fa-moon';
-      toggleBtn.setAttribute('aria-pressed', esOscuro);
-      toggleBtn.setAttribute('aria-label', esOscuro ? 'Activar modo claro' : 'Activar modo oscuro');
-    }
-
-    actualizarControlTema();
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      const esOscuro = document.body.classList.contains('dark-mode');
-      localStorage.setItem('blog-theme', esOscuro ? 'dark' : 'light');
-      actualizarControlTema();
-    });
-  </script>
+  <script src="{% static 'js/theme-toggle.js' %}"></script>
 
 </body>
 </html>
