@@ -1,0 +1,46 @@
+BITACORA PERSONAL DEL PROYECTO
+Blog y portafolio de Lorenzo Rojic
+
+COMO FUNCIONA
+-------------
+El proyecto usa Django. `config/urls.py` dirige `/` al portafolio y `/blog/`
+a las rutas de la aplicación `blog`.
+
+El listado muestra las entradas ordenadas de más nueva a más antigua. Cada
+entrada tiene una página propia identificada por su slug. Los modelos `Post`
+y `Comment`, en `blog/models.py`, guardan entradas y comentarios relacionados.
+Las portadas se guardan en `media/` y el resto de los recursos visuales son
+archivos estáticos.
+
+El formulario público solicita nombre y comentario. Django valida y guarda
+el comentario asociado a su entrada, y luego redirige para evitar que se
+envíe otra vez al recargar. Las plantillas están en `templates/`; el panel
+`/admin/` permite gestionar entradas y comentarios. La configuración y la
+base SQLite se definen en `config/settings.py`.
+
+DIFICULTADES Y SOLUCIONES
+-------------------------
+Al dejar de pedir el email para comentar, el modelo todavía lo requería.
+Lo hice opcional y agregué una migración para conservar la compatibilidad
+con la base existente.
+
+El control de tema estaba duplicado entre el blog y el portafolio. Unifiqué
+su JavaScript para que ambas páginas compartan el mismo comportamiento.
+También ordené plantillas que tenían bloques difíciles de leer y corregí
+una dirección incompleta en las instrucciones del README.
+
+QUÉ HARÍA DISTINTO 
+-------------------------------
+Habría agregado pruebas automatizadas desde el comienzo y separado antes el
+código compartido. 
+
+COMPROBACIONES
+--------------
+Verifiqué la configuración y las migraciones de Django, la carga de las
+páginas principales y que el formulario solo pida nombre y comentario. El
+proyecto aún no tiene pruebas automatizadas.
+
+Cosas que quedan en el tintero
+------------------------------
+crear un sistema de inicio de secion para el usuario, y una base de datos
+con todos lo ususario
