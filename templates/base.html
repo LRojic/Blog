@@ -14,18 +14,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/site.css' %}">
 </head>
-<body>
+<body class="{% if request.session.theme == 'dark' %}dark-mode{% endif %}">
     <header id="navbar" class="site-header">
         <nav class="site-navbar" aria-label="Navegación principal">
             <ul class="nav-links">
                 <li><a class="btn-blog" href="{% url 'portfolio' %}">Volver al portafolio</a></li>
                 <li><a href="/admin/">Admin</a></li>
-                <li><a href="{% url 'post_list' %}">Sobre nosotros</a></li>
             </ul>
             <a class="logo" href="{% url 'post_list' %}">Rojic's Blog</a>
-            <button id="theme-toggle" class="mode-toggle" type="button" aria-label="Activar modo oscuro" aria-pressed="false">
-                <i class="fa-solid fa-moon" aria-hidden="true"></i>
-            </button>
+            <form class="theme-toggle-form" action="{% url 'set_theme' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="theme" value="{% if request.session.theme == 'dark' %}light{% else %}dark{% endif %}">
+                <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                <button
+                    class="theme-toggle-button"
+                    type="submit"
+                    aria-label="{% if request.session.theme == 'dark' %}Activar modo claro{% else %}Activar modo oscuro{% endif %}"
+                    title="{% if request.session.theme == 'dark' %}Activar modo claro{% else %}Activar modo oscuro{% endif %}">
+                    {% if request.session.theme == 'dark' %}
+                        <i class="fa-regular fa-sun" aria-hidden="true"></i>
+                    {% else %}
+                        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+                    {% endif %}
+                </button>
+            </form>
         </nav>
     </header>
     {# Cada página hija inserta aquí su contenido específico. #}
@@ -47,6 +59,5 @@
             <p class="copyright">© {% now "Y" %} Lorenzo Rojic. Todos los derechos sixseven.</p>
         </div>
     </footer>
-    <script src="{% static 'js/theme-toggle.js' %}"></script>
 </body>
 </html>

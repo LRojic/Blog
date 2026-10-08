@@ -24,10 +24,9 @@ Al dejar de pedir el email para comentar, el modelo todavía lo requería.
 Lo hice opcional y agregué una migración para conservar la compatibilidad
 con la base existente.
 
-El control de tema estaba duplicado entre el blog y el portafolio. Unifiqué
-su JavaScript para que ambas páginas compartan el mismo comportamiento.
-También ordené plantillas que tenían bloques difíciles de leer y corregí
-una dirección incompleta en las instrucciones del README.
+El cambio de tema funciona con un formulario que Django procesa en Python y
+guarda en la sesión, sin JavaScript. También ordené plantillas difíciles de
+leer y corregí una dirección incompleta en las instrucciones del README.
 
 QUÉ HARÍA DISTINTO 
 -------------------------------

@@ -3,7 +3,9 @@
 {% block content %}
 {# Detalle de la entrada seleccionada, incluyendo contenido y metadatos. #}
 <article class="post-detail wrap">
-    <a class="back-link" href="{% url 'post_list' %}">← Volver al archivo</a>
+    <a class="back-link" href="{% url 'post_list' %}">
+        <span aria-hidden="true">←</span> Volver al archivo
+    </a>
     <header class="detail-header">
         <p class="eyebrow">{{ post.category }} · {{ post.published_at|date:"d.m.Y" }}</p>
         <h1>{{ post.title }}</h1>
@@ -63,4 +65,9 @@
         <button type="submit">Publicar comentario <span>↗</span></button>
     </form>
 </section>
+<div class="wrap post-detail-footer">
+    <a class="back-link" href="{% url 'post_list' %}">
+        <span aria-hidden="true">←</span> Volver al blog
+    </a>
+</div>
 {% endblock %}

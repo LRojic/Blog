@@ -15,7 +15,7 @@
 
   <link rel="icon" type="image/png" href="{% static 'assets/cobra-kai-logo.png' %}">
 </head>
-<body>
+<body class="{% if request.session.theme == 'dark' %}dark-mode{% endif %}">
 
   <header id="navbar">
     <nav>
@@ -30,9 +30,22 @@
         <a class="btn-blog" href="{% url 'post_list' %}">
           <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> Ir al blog
         </a>
-        <button id="theme-toggle" aria-label="Activar modo oscuro" aria-pressed="false" type="button">
-          <i class="fa-solid fa-moon" aria-hidden="true"></i>
-        </button>
+        <form class="theme-toggle-form" action="{% url 'set_theme' %}" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="theme" value="{% if request.session.theme == 'dark' %}light{% else %}dark{% endif %}">
+          <input type="hidden" name="next" value="{{ request.get_full_path }}">
+          <button
+            class="theme-toggle-button"
+            type="submit"
+            aria-label="{% if request.session.theme == 'dark' %}Activar modo claro{% else %}Activar modo oscuro{% endif %}"
+            title="{% if request.session.theme == 'dark' %}Activar modo claro{% else %}Activar modo oscuro{% endif %}">
+            {% if request.session.theme == 'dark' %}
+              <i class="fa-regular fa-sun" aria-hidden="true"></i>
+            {% else %}
+              <i class="fa-solid fa-moon" aria-hidden="true"></i>
+            {% endif %}
+          </button>
+        </form>
       </div>
     </nav>
   </header>
@@ -131,8 +144,6 @@
   <footer>
     <p>&copy; 2026 Rojic. Todos los derechos reservados.</p>
   </footer>
-
-  <script src="{% static 'js/theme-toggle.js' %}"></script>
 
 </body>
 </html>
